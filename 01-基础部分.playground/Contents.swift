@@ -1,5 +1,75 @@
 import UIKit
 
+/****************** 断言和先决条件 ******************/
+
+let index = 0
+
+precondition(index > 0, "Index must be greater than zero.")
+
+let age = -3
+
+if age > 10 {
+    print("You can ride the roller-coaster or the ferris wheel.")
+} else if age > 0 {
+    print("You can ride the ferris wheel.")
+} else {
+    assertionFailure("A person's age cannot be less than zero.")
+}
+
+assert(age >= 0)
+
+assert(age >= 0, "A person's age cannot be less than zero")
+
+/****************** 可选类型 ******************/
+
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+
+var serverResponseCode: Int? = 404
+serverResponseCode = nil
+
+var surveyAnswer: String?
+
+if convertedNumber != nil {
+    print("convertedNumber contains some integer value.")
+}
+
+if convertedNumber != nil {
+    print("convertedNumber has an integer value of \(convertedNumber!).")
+}
+
+if let actualNumber = Int(possibleNumber) {
+    print("\(possibleNumber) has an integer value of \(actualNumber)")
+} else {
+    print("\(possibleNumber) could not be converted to an integer")
+}
+
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+
+let possibleString: String? = "An optional string."
+let forceString: String = possibleString!
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString
+
+if assumedString != nil {
+    print(assumedString!)
+}
+
+if let definiteString = assumedString {
+    print(definiteString)
+}
+
 /****************** 元组 ******************/
 
 let http404Error = (404, "Not Found")
